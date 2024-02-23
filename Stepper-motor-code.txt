@@ -1,0 +1,88 @@
+;Stepper Motor Interfacing program
+
+DATA SEGMENT
+ PORTA EQU 00H
+ PORTB EQU 02H
+ PORTC EQU 04H
+ PORT_CON EQU 06H
+DATA ENDS
+CODE SEGMENT
+ MOV AX,DATA
+ MOV DS, AX
+
+ORG 0000H
+START:
+
+ MOV DX, PORT_CON
+ MOV AL, 10000000B
+ OUT DX, AL
+
+
+ JMP XX
+ 
+XX:  
+
+ MOV AL, 03H ; At 0 degree
+ MOV DX, PORTA
+ OUT DX,AL
+ MOV CX,0DF36H; Delay 
+Delay0:loop Delay0
+
+ MOV AL, 0BH  ; At 45 degree
+ MOV DX, PORTA
+ OUT DX,AL
+ MOV CX,0DF36H; Delay 
+Delay1:loop Delay1 
+
+ MOV AL, 0AH  ;At 90 degree
+ MOV DX, PORTA
+ OUT DX,AL
+ MOV CX,0DF36H; Delay 
+Delay2:loop Delay2
+
+ MOV AL, 0EH  ; At 135 degree
+ MOV DX, PORTA
+ OUT DX,AL
+ MOV CX,0DF36H; Delay 
+Delay3:loop Delay3
+
+ MOV AL, 0CH  ; At 180 degree
+ MOV DX, PORTA
+ OUT DX,AL
+ MOV CX,0DF36H; Delay 
+Delay4:loop Delay4
+
+ MOV AL, 0DH   ;At 225 degree
+ MOV DX, PORTA
+ OUT DX,AL
+ MOV CX,0DF36H; Delay 
+Delay5:loop Delay5
+
+ MOV AL, 05H  ;At 270 degree
+ MOV DX, PORTA
+ OUT DX,AL
+ MOV CX,0DF36H; Delay 
+Delay6:loop Delay6   
+
+ MOV AL, 07H  ;At 315 degree
+ MOV DX, PORTA
+ OUT DX,AL
+ MOV CX,0DF36H; Delay 
+Delay7:loop Delay7
+
+ MOV AL, 03H  ;At 360 degree
+ MOV DX, PORTA
+ OUT DX,AL
+ MOV CX,0DF36H; Delay 
+Delay8:loop Delay8    
+
+
+JMP XX
+
+
+
+JMP START
+
+
+CODE ENDS
+END
